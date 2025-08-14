@@ -1,0 +1,107 @@
+// src/style.scss
+
+// :root内でCSSカスタムプロパティを定義
+:root {
+  --font-size-base: 16px;
+      --color-text-primary: #08131a;
+    --color-text-secondary: rgba(8, 19, 26, 0.6588235294117647);
+        --elevation-4: 0px 4px 8px 3px rgba(0, 0, 0, 0.1411764705882353), 0px 1px 3px 0px rgba(0, 0, 0, 0.2196078431372549);
+}
+
+body .wp-block-note-rss-block {
+    font-family: "Helvetica Neue","Hiragino Sans","Hiragino Kaku Gothic ProN",Arial,"Noto Sans JP",Meiryo,sans-serif;
+    position: relative;
+      overflow: hidden;
+    ul{
+        padding-inline: 0px;
+    }
+    &.alignfull{
+    width: 100vw;
+    max-width: 100vw;
+        ul{
+            padding-inline: 20px;
+        }
+        .note-rss-feed-list-arrow{
+            margin: -10px 20px 0;
+        }
+    }
+  .note-rss-feed-list {
+  overflow: visible;
+    li {
+        width: 200px;
+    display: flex;
+    flex-direction: column;
+      a{
+        text-decoration:none;
+        transition: opacity .2s ease-in-out;
+      }
+      &:has(.note-rss-feed-list-text a:hover) img, >a:hover {
+        opacity: .5;
+      }
+    img{
+        width:100%; border-radius:8px;height: 100%;
+      }
+      .img-dmy{
+        height: 111px;border-radius:8px;background-color: #DFE2E4;
+      }
+    }
+  }
+
+
+}
+
+.note-rss-feed-list-text{
+    .note-rss-feed-list-text-title{
+            display: -webkit-box;
+            overflow: hidden;
+            font-size: var(--font-size-base);
+            -webkit-line-clamp: 3;
+            padding: 12px 0 0;
+            font-weight: 600;
+            line-height: 1.5;
+            letter-spacing: .04em;
+            overflow-wrap: anywhere;
+            font-feature-settings: "palt" 1;
+            -webkit-box-orient: vertical;
+            color: var(--color-text-primary);
+    }
+    .note-rss-feed-list-text-date{
+        margin-top: 12px;
+        font-size: 12px;
+        line-height: 1.5;
+        color: var(--color-text-secondary);
+        display: block;
+    }
+}
+
+.swiper{
+        overflow: unset!important;
+    .swiper-slide {
+    width: 300px; // スライド1枚の横幅を300pxに固定（好きな数値に調整してください）
+    flex-shrink: 0; // 親要素が狭まっても縮まないようにする
+    height: auto; // 高さはコンテンツに合わせる
+  }
+  .swiper-pagination{
+    display: none;
+  }
+    .swiper-button-disabled{
+    display: none;
+}
+.swiper-button-next, .swiper-button-prev{
+    width: 40px;
+    height: 40px;
+    background: #fff;
+    border-radius: 50%;
+    box-shadow: var(--elevation-4);
+    color: var(--color-text-primary);
+    &:after{
+      font-size: 12px;
+    }
+    &:focus{
+        outline-width: 0;
+    }
+    &:hover:after{
+        color: #000;
+    }
+  }
+}

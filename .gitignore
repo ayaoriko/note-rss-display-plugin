@@ -1,0 +1,8 @@
+# 依存関係パッケージ
+/node_modules
+
+# ビルド後のファイル
+/build
+
+# macOSのシステムファイル
+.DS_Store

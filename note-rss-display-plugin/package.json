@@ -1,0 +1,13 @@
+{
+	"name": "note-rss-block",
+	"version": "1.0.0",
+	"description": "note.com RSS Display Block",
+	"main": "build/index.js",
+	"scripts": {
+		"build": "wp-scripts build",
+		"start": "wp-scripts start"
+	},
+	"devDependencies": {
+		"@wordpress/scripts": "^27.9.0"
+	}
+}
