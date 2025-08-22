@@ -5,9 +5,12 @@
 	"main": "build/index.js",
 	"scripts": {
 		"build": "wp-scripts build",
-		"start": "wp-scripts start"
+		"start": "wp-scripts start",
+		"make-pot": "wp i18n make-pot . languages/note-rss-block.pot",
+		"make-en-mo": "wp i18n make-mo languages/en_US.po",
+		"build-and-mo": "npm run build && npm run make-en-mo"
 	},
 	"devDependencies": {
-		"@wordpress/scripts": "^27.9.0"
+		"@wordpress/scripts": "^30.22.0"
 	}
 }

@@ -1,8 +1,23 @@
-body .wp-block-note-rss-block .note-rss-feed-list{
+body .wp-block-note-rss-block{
+  .swiper .note-rss-feed-list{
     display: flex;
     gap: 0 20px;
 }
-
+    &:not(.alignfull){
+      float: none;
+    }
+} 
 .swiper-button-prev,.swiper-button-next{
     display: none;
+}
+
+.note-rss-no-slide{
+  .note-rss-no-slide-wrapper{
+    display: grid;
+    gap: 20px;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  }
+  .note-rss-no-slide-slide{
+    width: 100%!important;
+  }
 }

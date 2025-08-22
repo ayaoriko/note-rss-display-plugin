@@ -1,19 +1,18 @@
 import { __ } from '@wordpress/i18n';
 import { useBlockProps, InspectorControls } from '@wordpress/block-editor';
-import { PanelBody, TextControl, RangeControl, Placeholder } from '@wordpress/components';
+import { PanelBody, TextControl, RangeControl, Placeholder, ToggleControl } from '@wordpress/components';
 import ServerSideRender from '@wordpress/server-side-render';
 import { Fragment } from '@wordpress/element';
 import metadata from '../block.json';
-
 export default function Edit( { attributes, setAttributes } ) {
-	const { feed_url, items } = attributes;
+	const { feed_url, items, slide } = attributes;
 	const blockProps = useBlockProps();
 
 	const inspectorControls = (
 		<InspectorControls>
 			<PanelBody title={ __( 'フィード設定', 'note-rss-block' ) }>
 				<TextControl
-					label={ __( 'note.comのURL', 'note-rss-block' ) }
+					label={ __( 'URL', 'note-rss-block' ) }
 					value={ feed_url }
 					onChange={ ( newUrl ) => setAttributes( { feed_url: newUrl } ) }
 					help={ __( '例: https://note.com/your_id', 'note-rss-block' ) }
@@ -23,7 +22,19 @@ export default function Edit( { attributes, setAttributes } ) {
 					value={ items }
 					onChange={ ( newItems ) => setAttributes( { items: newItems } ) }
 					min={ 1 }
-					max={ 20 }
+					max={ 30 }
+				/>
+				<ToggleControl
+					label={ __( 'スライダー機能', 'note-rss-block' ) }
+					checked={ slide === 'on' }
+					onChange={ ( newValue ) =>
+						setAttributes( { slide: newValue ? 'on' : 'off' } )
+					}
+					help={
+						slide === 'on'
+							? __( 'スライダーは有効になっています。', 'note-rss-block' )
+							: __( 'スライダーは無効になっています。', 'note-rss-block' )
+					}
 				/>
 			</PanelBody>
 		</InspectorControls>

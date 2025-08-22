@@ -3,11 +3,11 @@
 	"apiVersion": 3,
 	"name": "note-rss/block",
 	"version": "1.0.0",
-	"title": "note.com RSS表示",
-	"category": "widgets",
+	"title": "note.com RSS Display Block",
+	"category": "media",
     "keywords": ["note", "rss", "feed"],
-	"icon": "rss",
-	"description": "note.comのRSSフィードをサムネイル付きで表示します。",
+    "icon": "edit-large",
+	"description": "note.comのRSSフィードを表示するブロックです。",
 	"attributes": {
 		"feed_url": {
 			"type": "string",
@@ -15,7 +15,11 @@
 		},
 		"items": {
 			"type": "number",
-			"default": 5
+			"default": 10
+		},
+		"slide": {
+		"type": "string",
+		"default": "on"
 		}
 	},
 	"supports": {
