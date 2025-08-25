@@ -2,9 +2,14 @@ body .wp-block-note-rss-block{
   .swiper .note-rss-feed-list{
     display: flex;
     gap: 0 20px;
-}
+  }
     &:not(.alignfull){
       float: none;
+    }
+  .note-rss-feed-list-text{
+    a{
+        color: #08131a!important;
+      }
     }
 } 
 .swiper-button-prev,.swiper-button-next{

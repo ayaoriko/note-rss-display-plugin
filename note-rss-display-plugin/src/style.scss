@@ -46,7 +46,8 @@ body .wp-block-note-rss-block {
         width:100%; border-radius:8px;height: 100%;
       }
       .img-dmy{
-        height: 111px;border-radius:8px;background-color: #DFE2E4;
+        border-radius:8px;background-color: #DFE2E4;
+        aspect-ratio: 200 / 105;
       }
     }
   }
@@ -78,7 +79,7 @@ body .wp-block-note-rss-block {
 }
 
 // スライダーありの場合のCSS
-.swiper{
+.wp-block-note-rss-block .swiper{
   overflow: unset!important;
   .swiper-slide {
     width: 300px;
@@ -98,8 +99,18 @@ body .wp-block-note-rss-block {
     border-radius: 50%;
     box-shadow: var(--elevation-4);
     color: var(--color-text-primary);
+    top: 50% !important;
     &:after{
       font-size: 12px;
+      color: var(--color-text-primary);
+      text-shadow: unset;
+      transition: unset;
+      transform: unset;
+      top: unset;
+      right: unset;
+      left: unset;
+      font-family: swiper-icons;
+      content: 'next';
     }
     &:focus{
         outline-width: 0;
