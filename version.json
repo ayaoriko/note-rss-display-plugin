@@ -1,12 +1,12 @@
 {
     "name" : " note.com RSS Display Block",
-    "version": "1.3.1",
-    "download_url": "https://ayaoriko.com/plugin-update-file/note-rss-block/note-rss-display-plugin_1.3.1.zip",
+    "version": "1.3.2",
+    "download_url": "https://ayaoriko.com/plugin-update-file/note-rss-block/note-rss-display-plugin_1.3.2.zip",
 	"last_updated": "2025-08-25",
 	"author": "あやおり子@ayaoriko",
 	"author_homepage": "https://ayaoriko.com/",
     "sections" : {
         "description" : "note.comのRSSフィードを表示するプラグインです。",
-        "changelog" : "v1.3.1 : 不具合修正＆プラグインの競合強化<br />v1.3 : 支援のお願いアラートとアップデーターの実装<br />v1.2 : スライダーのオンオフ機能の実装<br />v1.1 : WordPressのブロック化<br />v1.0.0 : クイックタグでの実装"
+        "changelog" : "v1.3.2 : 不具合修正<br />v1.3.1 : 不具合修正＆プラグインの競合強化<br />v1.3 : 支援のお願いアラートとアップデーターの実装<br />v1.2 : スライダーのオンオフ機能の実装<br />v1.1 : WordPressのブロック化<br />v1.0.0 : クイックタグでの実装"
     }
 }

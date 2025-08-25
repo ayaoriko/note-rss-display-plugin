@@ -4,7 +4,7 @@
  * Description:       note.comのRSSフィードを表示するプラグインです。
  * Plugin URI: https://ayaoriko.com/coding/wordpress/note-rss/
  * Requires PHP:      7.3
- * Version:           1.3.1
+ * Version:           1.3.2
  * Author: あやおり子@ayaoriko
  * Author URI: https://ayaoriko.com/
  * Text Domain:       note-rss-block
