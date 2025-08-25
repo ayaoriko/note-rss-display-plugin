@@ -15,6 +15,7 @@ note公式サイトのデザインを参考に、投稿された最新記事の�
 - block.json
 - build/ ディレクトリ（自動生成ファイル）
 - assets/ ディレクトリ（Swiper関連など）
+- updater/ ディレクトリ（プラグインのアップデーター関連）
 
 ※ZIP解凍後にnote-rss-display-plugin.phpがフォルダ直下にある状態であれば正しくインストールできます。
 

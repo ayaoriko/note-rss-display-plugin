@@ -2,12 +2,11 @@
 /*
  * Plugin Name:       note.com RSS Display Block
  * Description:       note.comのRSSフィードを表示するプラグインです。
- * Requires at least: 6.1
+ * Plugin URI: https://ayaoriko.com/coding/wordpress/note-rss/
  * Requires PHP:      7.3
- * Version:           1.2
- * Author:            ayaoriko
- * License:           GPL-2.0-or-later
- * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
+ * Version:           1.3
+ * Author: あやおり子@ayaoriko
+ * Author URI: https://ayaoriko.com/
  * Text Domain:       note-rss-block
  */
 
@@ -25,6 +24,20 @@ if ( ! defined( 'ABSPATH' ) ) {
 function note_rss_is_debug() {
     return false;
 }
+
+
+/**
+ * アップデーター
+ */
+require 'updater/plugin-update-checker.php';
+
+use YahnisElsts\PluginUpdateChecker\v5\PucFactory;
+
+$myUpdateChecker = PucFactory::buildUpdateChecker(
+	'https://ayaoriko.com/plugin-update-file/note-rss-block/version.json',
+	__FILE__,
+	'note-rss-block'
+);
 
 /**
  * ブロックを初期化する関数
@@ -300,3 +313,51 @@ function note_rss_block_enqueue_swiper() {
     );
 }
 add_action( 'wp_enqueue_scripts', 'note_rss_block_enqueue_swiper' );
+
+/**
+ * アンケートと支援のお願い
+ */
+function note_plugin_admin_notice() {
+    // 管理者のみ
+    if (!current_user_can('manage_options')) return;
+
+    $user_id = get_current_user_id();
+    
+    $debug_mode = note_rss_is_debug();
+    
+    if (! $debug_mode ) {
+        // 既に表示済みか確認
+        if ( get_user_meta( $user_id, 'note_plugin_notice_shown', true ) ) {
+            return; // すでに表示済みなら終了
+        }
+    }
+
+    // 通知を出す
+    echo '<div class="notice notice-info is-dismissible">';
+    echo '<p><strong>' . esc_html__( 'note.com RSS Display Block プラグインをご利用いただき、ありがとうございます！！', 'note-rss-block' ) . '</strong></p>';
+
+    echo '<p><strong>' . esc_html__( '■ アンケートご協力のお願い', 'note-rss-block' ) . '</strong><br>' .
+        esc_html__( '今後の活動に役立てるためのアンケートにご協力いただけると嬉しいです。', 'note-rss-block' ) . '<br>' .
+        sprintf(
+            '<a href="%s" target="_blank">%s</a>',
+            esc_url("https://ayaoriko.studio.site/chip"),
+            esc_html__( 'アンケートはこちら', 'note-rss-block' )
+        ) .
+        '</p>';
+
+    echo '<p><strong>' . esc_html__( '■ 支援のお願い', 'note-rss-block' ) . '</strong><br>' .
+        esc_html__( '私の活動を応援していただく形で、ほしい物リストからご支援いただけると、開発のモチベーションがアップします。', 'note-rss-block' ) . '<br>' .
+        sprintf(
+            '<a href="%s" target="_blank">%s</a>',
+            esc_url("https://www.amazon.jp/hz/wishlist/ls/2FAK8W49YO9DT?ref_=wl_share"),
+            esc_html__( 'ほしい物リストを見る', 'note-rss-block' )
+        ) .
+        '</p>';
+    echo '</div>';
+
+    update_user_meta( $user_id, 'note_plugin_notice_shown', 1 );
+}
+
+add_action('admin_notices', 'note_plugin_admin_notice');
+
+
