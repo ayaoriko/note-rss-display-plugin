@@ -10,43 +10,69 @@
 
 // レイアウト設定
 body .wp-block-note-rss-block {
-    font-family: "Helvetica Neue","Hiragino Sans","Hiragino Kaku Gothic ProN",Arial,"Noto Sans JP",Meiryo,sans-serif;
-    position: relative;
-      overflow: hidden;
-    ul{
-        padding-inline: 0px;
+  font-family: "Helvetica Neue", "Hiragino Sans", "Hiragino Kaku Gothic ProN", Arial, "Noto Sans JP", Meiryo, sans-serif;
+  position: relative;
+  overflow: hidden;
+
+  ul {
+    padding-inline: 0px;
+  }
+
+  &.alignfull {
+    width: 100vw;
+    max-width: 100vw;
+
+    ul {
+      margin-inline: 20px;
     }
-    &.alignfull{
-      width: 100vw;
-      max-width: 100vw;
-        ul{
-            margin-inline: 20px;
-        }
-        .note-rss-feed-list-arrow{
-            margin: -10px 20px 0;
-        }
+
+    .note-rss-feed-list-arrow {
+      margin: -10px 20px 0;
     }
-    &:not(.alignfull){
-      float: none;
-    }
+  }
+
+  &:not(.alignfull) {
+    float: none;
+  }
+
   .note-rss-feed-list {
     overflow: visible;
+
     li {
-        width: 200px;
-    display: flex;
-    flex-direction: column;
-      a{
-        text-decoration:none;
-        transition: opacity .2s ease-in-out;
+      width: 200px;
+      display: flex;
+      flex-direction: column;
+
+      p:empty {
+        display: none;
       }
-      &:has(.note-rss-feed-list-text a:hover) img, >a:hover {
+
+      a {
+        text-decoration: none;
+        transition: opacity .2s ease-in-out;
+        color: inherit !important;
+
+        &+br {
+          display: none;
+        }
+      }
+
+      &:has(.note-rss-feed-list-text a:hover) img,
+      >a:hover {
         opacity: .5;
       }
-    img{
-        width:100%; border-radius:8px;height: 100%;
+
+      img {
+        width: 100%;
+        aspect-ratio: 200 / 105;
+        object-fit: cover;
+        margin-bottom: 0;
+        border-radius: 8px;
       }
-      .img-dmy{
-        border-radius:8px;background-color: #DFE2E4;
+
+      .img-dmy {
+        border-radius: 8px;
+        background-color: #DFE2E4;
         aspect-ratio: 200 / 105;
       }
     }
@@ -54,87 +80,103 @@ body .wp-block-note-rss-block {
 }
 
 // 各記事のCSS
-.note-rss-feed-list-text{
-    .note-rss-feed-list-text-title{
-            display: -webkit-box;
-            overflow: hidden;
-            font-size: var(--font-size-base);
-            -webkit-line-clamp: 3;
-            padding: 12px 0 0;
-            font-weight: 600;
-            line-height: 1.5;
-            letter-spacing: .04em;
-            overflow-wrap: anywhere;
-            font-feature-settings: "palt" 1;
-            -webkit-box-orient: vertical;
-            color: var(--color-text-primary);
-    }
-    .note-rss-feed-list-text-date{
-        margin-top: 12px;
-        font-size: 12px;
-        line-height: 1.5;
-        color: var(--color-text-secondary);
-        display: block;
-    }
+.note-rss-feed-list-text {
+  .note-rss-feed-list-text-title {
+    display: -webkit-box;
+    overflow: hidden;
+    font-size: var(--font-size-base);
+    -webkit-line-clamp: 3;
+    padding: 12px 0 0;
+    font-weight: 600;
+    line-height: 1.5;
+    letter-spacing: .04em;
+    overflow-wrap: anywhere;
+    font-feature-settings: "palt" 1;
+    -webkit-box-orient: vertical;
+    color: var(--color-text-primary);
+  }
+
+  .note-rss-feed-list-text-date {
+    margin-top: 12px;
+    font-size: 12px;
+    line-height: 1.5;
+    color: var(--color-text-secondary);
+    display: block;
+  }
 }
 
 // スライダーありの場合のCSS
-.wp-block-note-rss-block .swiper{
-  overflow: unset!important;
+.wp-block-note-rss-block .swiper {
+  overflow: unset !important;
+
   .swiper-slide {
     width: 300px;
     flex-shrink: 0;
-    height: auto; 
+    height: auto;
   }
-  .swiper-pagination{
+
+  .swiper-pagination {
     display: none;
   }
-    .swiper-button-disabled{
+
+  .swiper-button-disabled {
     display: none;
-}
-.swiper-button-next, .swiper-button-prev{
+  }
+
+  .swiper-button-next,
+  .swiper-button-prev {
     width: 40px;
     height: 40px;
     background: #fff;
     border-radius: 50%;
     box-shadow: var(--elevation-4);
     color: var(--color-text-primary);
-    top: 50% !important;
-    &:after{
-      font-size: 12px;
-      color: var(--color-text-primary);
-      text-shadow: unset;
-      transition: unset;
-      transform: unset;
-      top: unset;
-      right: unset;
-      left: unset;
-      font-family: swiper-icons;
-      content: 'next';
+    top: 0 !important;
+    bottom: 0 !important;
+    margin: auto !important;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' height='24px' viewBox='0 0 24 24' width='24px' fill='%2308131a'%3E%3Cpath d='M0 0h24v24H0V0z' fill='none'/%3E%3Cpath d='M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z'/%3E%3C/svg%3E") !important;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 24px !important;
+    background-position: center;
+
+    &::before {
+      display: none;
     }
-    &:focus{
-        outline-width: 0;
+
+    &::after {
+      display: none;
     }
-    &:hover:after{
-        color: #000;
+
+    &:focus {
+      outline-width: 0;
+    }
+
+    &:hover:after {
+      color: #000;
     }
   }
-   .swiper-button-prev{
+
+  .swiper-button-prev {
     transform: rotate(180deg);
   }
 }
 
 
 // スライダーなしの場合のCSS
-.note-rss-no-slide{
-  .note-rss-no-slide-wrapper{
+.note-rss-no-slide {
+  .note-rss-no-slide-wrapper {
     display: grid;
     gap: 20px;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   }
-  .note-rss-no-slide-slide{
-    width: 100%!important;
-    img,.img-dmy{
+
+  .note-rss-no-slide-slide {
+    width: 100% !important;
+    padding-left: 0;
+
+    img,
+    .img-dmy {
       aspect-ratio: 200 / 105;
       height: auto !important;
     }
